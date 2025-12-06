@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SS Shop - Shopping List</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">SS Shop</div>
+      <div class="subtitle">Type item name, add quantity and build your shopping list</div>
+    </header>
+
+    <main>
+      <!-- Search & Add -->
+      <section class="search-panel card">
+        <label>Search item or type new</label>
+        <div class="search-row">
+          <input id="searchInput" placeholder="Item name..." />
+          <input id="qtyInput" type="number" min="1" value="1" title="Quantity" />
+          <button id="addSelectedBtn">Add</button>
+        </div>
+        <ul id="suggestions" class="suggestions" tabindex="0"></ul>
+        <div class="hint">Use ↑ ↓ keys to navigate, Enter to add</div>
+      </section>
+
+      <!-- Shopping List -->
+      <section class="list-panel card">
+        <div class="list-head">
+          <h3>Shopping List</h3>
+          <div class="controls">
+            <button id="printBtn">Print</button>
+            <button id="downloadPdfBtn">Download PDF</button>
+            <button id="clearListBtn">Clear All</button>
+          </div>
+        </div>
+        <ul id="shoppingList" class="shopping-list"></ul>
+        <div class="summary">
+          <div>Total items: <span id="totalCount">0</span></div>
+        </div>
+      </section>
+
+      <!-- Admin Panel -->
+      <section class="admin-panel card">
+        <h3>Admin: Master List</h3>
+        <div class="admin-row">
+          <input id="newMasterItem" placeholder="New master item" />
+          <button id="addMasterBtn">Add</button>
+        </div>
+
+        <!-- Bulk Import -->
+        <div class="admin-row" style="flex-direction:column; gap:6px;">
+          <label>Bulk Import (paste one item per line from Excel/CSV)</label>
+          <textarea id="bulkImportArea" rows="6" placeholder="Paste items here..."></textarea>
+          <button id="bulkImportBtn">Add Bulk</button>
+        </div>
+
+        <ul id="masterList" class="master-list"></ul>
+        <div class="admin-hint">Master list is saved locally in your browser.</div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Works offline, data saved only on this browser.</small>
+    </footer>
+  </div>
+
+  <script id="initial-items" type="application/json">
+    ["Rice","Wheat Flour","Sugar","Salt","Tea Powder","Coffee","Milk","Eggs","Butter","Ghee","Oil","Soap","Curd","Shampoo","Biscuits","Snacks","Tomato","Urad Dal","Green Chili","Curry Leaves"]
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
